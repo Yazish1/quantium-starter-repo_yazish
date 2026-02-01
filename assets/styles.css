@@ -1,0 +1,20 @@
+body {
+    background-color: antiquewhite;
+    font-family: 'Times New Roman', Times, serif;
+}
+.container {
+    margin: auto
+}
+.title {
+    text-align: center;
+    color: saddlebrown;
+}
+.radio {
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.graph {
+    background-color: antiquewhite;
+    border-radius: 12px;
+}
