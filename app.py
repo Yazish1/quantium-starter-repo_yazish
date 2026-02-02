@@ -1,9 +1,14 @@
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
 import pandas as pd
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "data" / "pink_morsel_sales.csv"
+df = pd.read_csv(DATA_PATH)
 
 app = Dash(__name__)
-df = pd.read_csv(r"quantium-starter-repo_yazish\data\pink_morsel_sales.csv")
+
 df["date"] = pd.to_datetime(df["date"], errors="coerce")
 df = df[
     (df["date"] >= "2021-01-01") & (df["date"] <= "2021-02-01")]
@@ -12,10 +17,11 @@ app.layout = html.Div(
     className="container",
     children=[
         html.H1("Pink Morsel sales - January 2021",
-            className="title"),
+            className="title",
+            id="header"),
         dcc.RadioItems(
-            id="region",
             className="radio",
+            id="region-radio",
             options= [
                 {"label": "All", "value": "all"},
                 {"label": "North", "value": "north"},
@@ -27,8 +33,9 @@ app.layout = html.Div(
             inline=True
         ),
         html.Div(
-            dcc.Graph(id="Pink-Morsel-Sales",
-                className="graph")
+            dcc.Graph(
+                className="graph",
+                id="visual_graph")
         )
     ]
 )
