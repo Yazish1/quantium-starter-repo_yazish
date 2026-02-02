@@ -6,6 +6,7 @@ exit_code=$?
 
 if [ $exit_code -eq 0 ]; then
     echo "Test Passed!"
+    exit 0
 else
     echo "Test failed"
     exit 1
